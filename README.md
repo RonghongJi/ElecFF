@@ -1,6 +1,6 @@
 # ElecFF
 
-Thank you for your interest in this project, and I hope that the following presentations will give you a deeper understanding of this research!
+Thank you for your interest in this project! The following presentations are aimed to provide you with a deeper understanding of this research.
 
 ![image](ElecFF.png)
 

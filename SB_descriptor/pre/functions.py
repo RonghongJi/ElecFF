@@ -1,18 +1,3 @@
-#!/usr/bin/env python
-# Copyright 2019-2021 The NeuralIL contributors
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 import math
 
 import numpy as onp
@@ -210,45 +195,3 @@ def create_j_l(order: int, dtype: onp.dtype = onp.float32):
         return primal_out, tangent_out
 
     return j_l
-
-
-if __name__ == "__main__":
-    import scipy as sp
-    import scipy.special
-    import matplotlib
-    import matplotlib.pyplot as plt
-
-    order = 10
-
-    returned_function = create_j_l(order, dtype=onp.float32)
-    r = jnp.linspace(1e-3, 50., num=1001)
-    value = returned_function(r)
-    reference = scipy.special.spherical_jn(order, r)
-
-    plt.figure()
-    plt.plot(r, value, label="value")
-    plt.plot(r, reference, label="reference")
-    plt.axvline(x=order, color="#666666", lw=2.)
-    plt.ylim(reference.min(), reference.max())
-    plt.xlabel("$r$")
-    plt.ylabel(f"$j_{order}$")
-    plt.legend(loc="best")
-    plt.tight_layout()
-
-    derivative_function = jnp.vectorize(jax.grad(returned_function))
-    derivative_value = derivative_function(r)
-    derivative_reference = scipy.special.spherical_jn(order,
-                                                      r,
-                                                      derivative=True)
-
-    plt.figure()
-    plt.plot(r, derivative_value, label="derivative")
-    plt.plot(r, derivative_reference, label="reference")
-    plt.axvline(x=order, color="#666666", lw=2.)
-    plt.ylim(derivative_reference.min(), derivative_reference.max())
-    plt.xlabel("$r$")
-    plt.ylabel(f"$j'_{order}$")
-    plt.legend(loc="best")
-    plt.tight_layout()
-
-    plt.show()

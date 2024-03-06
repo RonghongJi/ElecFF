@@ -1,23 +1,3 @@
-#!/usr/bin/env python
-# Copyright 2019-2021 The NeuralIL contributors
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-# Code used to calculate the coefficients of the spherical Bessel functions of
-# the first kind. Modelled after the the Apache-licensed reference
-# implementation of the spherical Bessel descriptors
-# (doi: 10.1063/1.5111045 , https://github.com/harharkh/sb_desc ).
-
 import numpy as np
 import jax
 import sys
@@ -65,15 +45,3 @@ class SphericalBesselCoefficients:
                      1] = u_1 / function(u_0) * coeff
             self.c_2[order, :self.__n_max - order +
                      1] = u_0 / function(u_1) * coeff
-
-
-if __name__ == "__main__":
-    import timeit
-    import datetime
-
-    test_n_max = 139
-
-    start = timeit.default_timer()
-    coefficients = SphericalBesselCoefficients(test_n_max)
-    end = timeit.default_timer()
-    print("Time elapsed:", str(datetime.timedelta(seconds=end - start)))

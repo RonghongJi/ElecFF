@@ -1,5 +1,9 @@
 # ElecFF
 
+Thank you for your interest in this project, and I hope that the following presentations will give you a deeper understanding of this research!
+
+![image](ElecFF.png)
+
 ## SB_descriptor
 
 bessel_descriptors.py computes the final representation of the atomic environment descriptor, describing the environment as a power spectral density function.

@@ -4,20 +4,14 @@ Thank you for your interest in this project! The following presentations are aim
 
 ![image](ElecFF.png)
 
-## dataset
-
-In the master branch, we have uploaded the JSON files of the four ionic liquids used in this research, which contain information about energy, force, position, atom_number and cell_size for the reader's reference.
-
-## SB_descriptor
-
-bessel_descriptors.py computes the final representation of the atomic environment descriptor, describing the environment as a power spectral density function.
-
-There are three files in the pre folder, they are coefficients.py, functions.py and roots.py, they are used in generating spherical Bessel descriptors.
-
 ## model.py
 
-model.py Defines all models used in this research.
+model.py defines the two most prominent models in the research, ElecFF and NoElec.
 
-## train.py
+## param_elecff.py
 
-train.py includes the training parameter phase and the predicted force field phase for all models.
+param_elecff.py is the parameter training part of ElecFF.
+
+## train_elecff.py
+
+train_elecff.py is the predicted energy and force part of ElecFF.
